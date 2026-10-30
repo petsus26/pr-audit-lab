@@ -2,7 +2,7 @@ from datetime import datetime, timedelta, timezone
 
 from utils import (
     API_URL, REPO, DAYS_BACK, RAW_DIR,
-    get_session, get_all_pages, save_json,
+    get_session, get_all_pages, github_get, save_json,
 )
 
 
@@ -13,7 +13,8 @@ def fetch_merged_prs(session, days):
     page = 1
 
     while True:
-        response = session.get(
+        response = github_get(
+            session,
             f"{API_URL}/repos/{REPO}/pulls",
             params={
                 "state": "closed",
@@ -23,7 +24,6 @@ def fetch_merged_prs(session, days):
                 "page": page,
             },
         )
-        response.raise_for_status()
         prs = response.json()
 
         if not prs:
@@ -45,8 +45,7 @@ def fetch_merged_prs(session, days):
 
 def fetch_branch_rules(session, branch):
     """Fetch the active ruleset rules for a branch (includes required status checks)."""
-    response = session.get(f"{API_URL}/repos/{REPO}/rules/branches/{branch}")
-    response.raise_for_status()
+    response = github_get(session, f"{API_URL}/repos/{REPO}/rules/branches/{branch}")
     return response.json()
 
 

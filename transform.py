@@ -11,19 +11,21 @@ PASSING_RESULTS = {"success", "skipped", "neutral"}
 
 VERDICT_STATES = {"APPROVED", "CHANGES_REQUESTED", "DISMISSED"}
 
+REPORT_COLUMNS = [
+    "PR_NUMBER", "TITLE", "AUTHOR", "MERGE_DATE",
+    "CR_PASSED", "CHECKS_PASSED", "APPROVERS", "FAILED_CHECKS",
+]
 
-# ---------- helpers ----------
 
 def load_json(path):
+    if not path.exists():
+        raise FileNotFoundError(f"{path} not found. Run without --skip-extract first to fetch the data.")
     with open(path, encoding="utf-8") as f:
         return json.load(f)
-
 
 def parse_time(timestamp):
     """Turn GitHub's '2026-10-29T23:19:29Z' into a datetime (or None if missing)."""
     return datetime.fromisoformat(timestamp) if timestamp else None
-
-
 
 def get_required_checks(branch_rules):
     """Pull the required status checks out of a branch's ruleset rules."""
@@ -32,8 +34,6 @@ def get_required_checks(branch_rules):
         if rule["type"] == "required_status_checks":
             required.extend(rule["parameters"]["required_status_checks"])
     return required
-
-
 
 def evaluate_reviews(reviews, pr_author, merged_at):
     """
@@ -64,8 +64,6 @@ def evaluate_reviews(reviews, pr_author, merged_at):
 
     approvers = sorted(login for login, (_, state) in latest_verdict.items() if state == "APPROVED")
     return len(approvers) >= 1, approvers
-
-
 
 
 def find_check_result(required_check, check_runs, statuses, merged_at):
@@ -101,7 +99,6 @@ def find_check_result(required_check, check_runs, statuses, merged_at):
     _, result = max(before_merge, key=lambda c: c[0])
     return result
 
-
 def evaluate_checks(required_checks, check_runs, statuses, merged_at):
     """Return (passed, list of failing checks with reasons)."""
     failing = []
@@ -110,8 +107,6 @@ def evaluate_checks(required_checks, check_runs, statuses, merged_at):
         if result not in PASSING_RESULTS:
             failing.append(f"{required_check['context']} ({result})")
     return len(failing) == 0, failing
-
-
 
 def build_report():
     prs = load_json(RAW_DIR / "merged_prs.json")
@@ -127,6 +122,9 @@ def build_report():
         author = pr["user"]["login"] if pr["user"] else "ghost"
 
         required_checks = get_required_checks(rules.get(pr["base"]["ref"], []))
+        
+        if not required_checks:
+            print(f"Warning: no required checks defined for branch '{pr['base']['ref']}' (PR #{number})")
 
         cr_passed, approvers = evaluate_reviews(reviews.get(number, []), author, merged_at)
         checks_passed, failing = evaluate_checks(
@@ -147,10 +145,9 @@ def build_report():
             "FAILED_CHECKS": "; ".join(failing),
         })
 
-    df = pd.DataFrame(rows)
+    df = pd.DataFrame(rows, columns=REPORT_COLUMNS)
     df["MERGE_DATE"] = pd.to_datetime(df["MERGE_DATE"])
     return df
-
 
 def run_transform():
     df = build_report()
@@ -162,7 +159,6 @@ def run_transform():
     print(f"  CR_PASSED:     {df['CR_PASSED'].sum()} / {len(df)}")
     print(f"  CHECKS_PASSED: {df['CHECKS_PASSED'].sum()} / {len(df)}")
     return df
-
 
 if __name__ == "__main__":
     run_transform()

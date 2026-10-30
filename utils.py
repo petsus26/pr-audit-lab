@@ -1,6 +1,7 @@
 import json
 import os
 from pathlib import Path
+import time
 
 import requests
 from dotenv import load_dotenv
@@ -32,6 +33,48 @@ def get_session():
     })
     return session
 
+class GitHubAPIError(Exception):
+    """Raised for GitHub errors we can explain clearly to the user."""
+
+
+def rate_limit_wait_seconds(response):
+    """If this response is a rate limit, return how long to wait. Otherwise None."""
+    if "Retry-After" in response.headers: 
+        return int(response.headers["Retry-After"])
+    if response.headers.get("X-RateLimit-Remaining") == "0":  
+        reset_at = int(response.headers["X-RateLimit-Reset"])
+        return max(reset_at - int(time.time()), 0) + 1
+    return None
+
+
+def github_get(session, url, params=None, max_retries=3):
+    """GET a GitHub URL with clear errors, rate-limit waiting and retries."""
+    for attempt in range(1, max_retries + 1):
+        response = session.get(url, params=params, timeout=30)
+
+        if response.status_code == 401:
+            raise GitHubAPIError("GitHub rejected the token (401). Check GITHUB_TOKEN in .env: it may be wrong or expired.")
+        if response.status_code == 404:
+            raise GitHubAPIError(f"Not found (404): {url}\nCheck GITHUB_REPO in .env.")
+
+        if response.status_code in (403, 429):
+            wait = rate_limit_wait_seconds(response)
+            if wait is not None and attempt < max_retries:
+                print(f"Rate limit reached. Waiting {wait} seconds before retrying...")
+                time.sleep(wait)
+                continue
+
+        if response.status_code >= 500 and attempt < max_retries:
+            wait = 2 ** attempt  
+            print(f"GitHub server error ({response.status_code}). Retrying in {wait}s...")
+            time.sleep(wait)
+            continue
+
+        response.raise_for_status()  
+        return response
+
+
+
 
 def get_all_pages(session, url, params=None, items_key=None):
     """
@@ -44,8 +87,7 @@ def get_all_pages(session, url, params=None, items_key=None):
     params = {"per_page": 100, **(params or {})}
 
     while url:
-        response = session.get(url, params=params)
-        response.raise_for_status()
+        response = github_get(session, url, params=params)
         data = response.json()
 
         results.extend(data[items_key] if items_key else data)
