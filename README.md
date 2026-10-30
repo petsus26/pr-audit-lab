@@ -27,7 +27,7 @@ GitHub API ──▶ extract.py ──▶ data/raw/ ──▶ transform.py ─�
 
 ## Setup
 
-Requires Python 3.10+.
+Requires Python 3.11.
 
 ```bash
 git clone https://github.com/petsus26/pr-audit-lab.git
