@@ -81,11 +81,10 @@ tell anyone what to fix. These columns explain each result.
 ### Example run
 
 ```
-<paste the summary lines from one of your real runs here, e.g.>
-Found 152 merged PRs in home-assistant/core from the last 7 days
-Processed 152 PRs
-  CR_PASSED:     150 / 152
-  CHECKS_PASSED: 147 / 152
+Processed 51 PRs
+  CR_PASSED:     51 / 51
+  CHECKS_PASSED: 33 / 51
+Report saved to output\pr_audit_report.csv and output\pr_audit_report.parquet
 ```
 
 ## How the audit decides
