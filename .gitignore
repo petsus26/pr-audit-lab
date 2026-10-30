@@ -11,5 +11,4 @@ __pycache__/
 # Generated data (keep folder structure)
 data/raw/*
 data/processed/*
-output/*
 !**/.gitkeep

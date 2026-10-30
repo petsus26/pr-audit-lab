@@ -1,0 +1,49 @@
+﻿PR_NUMBER,TITLE,AUTHOR,MERGE_DATE,CR_PASSED,CHECKS_PASSED,APPROVERS,FAILED_CHECKS
+189514,Close shared modbus connections when HA stops or restarts,WillCodeForCats,2026-10-30 08:14:14+00:00,True,True,balloob,
+189491,Add reconfigure flow to `silvercrest_infrared`,tr4nt0r,2026-10-30 07:19:18+00:00,True,False,zweckj,code-owner-approval (not_finished_before_merge)
+189494,Add diagnostics to `silvercrest_infrared`,tr4nt0r,2026-10-30 07:19:37+00:00,True,True,zweckj,
+188972,Track Overkiz executions started outside Home Assistant,iMicknl,2026-10-30 07:18:39+00:00,True,True,zweckj,
+189350,Bump pyanglianwater to 3.3.3,pantherale0,2026-10-30 07:17:01+00:00,True,True,zweckj,
+189513,Bump systembridgeconnector to 5.23.0,timmo001,2026-10-30 06:55:31+00:00,True,True,erwindouna,
+172752,Skip unsupported HomeKit security states instead of raising,mattias-arrelid,2026-10-29 22:11:23+00:00,True,True,"abmantis, bluetoothbot",
+189452,Update Marketplace update entities when a repository is refreshed from its page,Markus98,2026-10-30 03:19:10+00:00,True,True,raman325,
+189508,Bump midea-local to 15.0.0,rokam,2026-10-29 22:22:04+00:00,True,True,"abmantis, chemelli74",
+189518,Bump arcam-fmj to 3.1.1,elupus,2026-10-29 23:38:53+00:00,True,True,thecode,
+189403,Do not end a truncated entity ID with an underscore,weatherhog,2026-10-29 14:49:24+00:00,True,True,"MichaelMKKelly, arturpragacz, emontnemery, thecode",
+189495,Bump pystiebeleltron to 0.10.1,Optic00,2026-10-29 22:22:20+00:00,True,True,abmantis,
+189498,Add missing test for 100% config flow coverage in `silvercrest_infrared`,tr4nt0r,2026-10-29 22:06:47+00:00,True,True,thecode,
+189450,Show ZBT-2 and ZBT-1 connections via ESPHome serial proxies,puddly,2026-10-29 16:40:40+00:00,True,True,silamon,
+189501,Bump systembridgeconnector to 5.22.1,timmo001,2026-10-29 22:02:39+00:00,True,True,thecode,
+189507,Set PARALLEL_UPDATES for Bluesound platforms,LouisChrist,2026-10-29 22:01:28+00:00,True,True,thecode,
+189505,Update knx-frontend to 2026.10.29.192948,farmio,2026-10-29 21:50:37+00:00,True,True,thecode,
+189479,Bump py-synologydsm-api to 2.11.1,mib1185,2026-10-29 21:44:26+00:00,True,True,thecode,
+189490,Bump bluetti-modbus to 0.57.0,chpego,2026-10-29 21:42:24+00:00,True,True,thecode,
+189471,Prefer cloud custom domains in get_url,balloob,2026-10-29 21:35:38+00:00,True,True,jbouwh,
+189480,Bump pyfirefly to 0.1.17,erwindouna,2026-10-29 20:14:28+00:00,True,True,TheJulianJES,
+189465,Update frontend to 20261028.1,bramkragten,2026-10-29 16:38:03+00:00,True,False,thecode,code-owner-approval (not_finished_before_merge); docs-missing (not_finished_before_merge); blocking-label-awaiting-frontend (not_finished_before_merge); required-labels (not_finished_before_merge)
+189460,Use the request origin for MCP server icon URLs,balloob,2026-10-29 16:41:48+00:00,True,False,silamon,code-owner-approval (not_finished_before_merge); docs-missing (not_finished_before_merge); blocking-label-awaiting-frontend (not_finished_before_merge); required-labels (not_finished_before_merge)
+189455,Use stored data in Nord Pool get prices action,gjohansson-ST,2026-10-29 16:42:12+00:00,True,False,thecode,code-owner-approval (not_finished_before_merge); docs-missing (not_finished_before_merge); blocking-label-awaiting-frontend (not_finished_before_merge); required-labels (not_finished_before_merge)
+189414,Ask to accept the La Marzocco privacy policy in config and reauth flows,zweckj,2026-10-29 16:45:44+00:00,True,False,silamon,code-owner-approval (not_finished_before_merge); docs-missing (not_finished_before_merge); blocking-label-awaiting-frontend (not_finished_before_merge); required-labels (not_finished_before_merge)
+189320,Show the AI tools field as a checkbox list,piitaya,2026-10-29 16:45:03+00:00,True,False,silamon,code-owner-approval (not_finished_before_merge); docs-missing (not_finished_before_merge); blocking-label-awaiting-frontend (not_finished_before_merge); required-labels (not_finished_before_merge)
+189298,Fix flaky WiZ reconfigure loaded entry test,joostlek,2026-10-29 16:38:43+00:00,True,False,silamon,code-owner-approval (not_finished_before_merge); docs-missing (not_finished_before_merge); blocking-label-awaiting-frontend (not_finished_before_merge); required-labels (not_finished_before_merge)
+179151,Add an arming blocked sensor to HomematicIP Cloud,lackas,2026-10-29 16:34:43+00:00,True,True,erwindouna,
+189437,Bump sofar-modbus to 0.25.2,darkrain-nl,2026-10-29 13:35:45+00:00,True,False,thecode,code-owner-approval (not_finished_before_merge); docs-missing (not_finished_before_merge); blocking-label-awaiting-frontend (not_finished_before_merge); required-labels (not_finished_before_merge)
+189426,Bump idasen-ha to 3.0.2,abmantis,2026-10-29 13:18:45+00:00,True,False,TheJulianJES,code-owner-approval (not_finished_before_merge); docs-missing (not_finished_before_merge); blocking-label-awaiting-frontend (not_finished_before_merge); required-labels (not_finished_before_merge)
+189424,Bump aiopowerwall to 0.10.0,Bre77,2026-10-29 12:00:05+00:00,True,False,TheJulianJES,code-owner-approval (not_finished_before_merge); cla-bot (not_finished_before_merge); docs-missing (not_finished_before_merge); blocking-label-awaiting-frontend (not_finished_before_merge); required-labels (not_finished_before_merge)
+189413,Bump sofar-modbus to 0.25.1,darkrain-nl,2026-10-29 09:19:46+00:00,True,False,thecode,code-owner-approval (not_finished_before_merge); docs-missing (not_finished_before_merge); blocking-label-awaiting-frontend (not_finished_before_merge); required-labels (not_finished_before_merge)
+189408,Bump pylamarzocco to 2.5.3,zweckj,2026-10-29 09:06:33+00:00,True,False,thecode,code-owner-approval (not_finished_before_merge); cla-bot (not_finished_before_merge); docs-missing (not_finished_before_merge); blocking-label-awaiting-frontend (not_finished_before_merge); required-labels (not_finished_before_merge)
+189404,Read the Supervisor log for the integration log history,erwindouna,2026-10-29 15:26:56+00:00,True,False,"agners, timmo001",code-owner-approval (not_finished_before_merge); docs-missing (not_finished_before_merge); blocking-label-awaiting-frontend (not_finished_before_merge); required-labels (not_finished_before_merge)
+189401,Bump python-open-router to 0.5.0,joostlek,2026-10-29 09:15:42+00:00,True,False,thecode,code-owner-approval (not_finished_before_merge); docs-missing (not_finished_before_merge); blocking-label-awaiting-frontend (not_finished_before_merge); required-labels (not_finished_before_merge)
+189353,Fix System Monitor IP sensor setup with missing addresses,jagostinhoj,2026-10-29 12:57:39+00:00,True,False,gjohansson-ST,code-owner-approval (not_finished_before_merge); docs-missing (not_finished_before_merge); blocking-label-awaiting-frontend (not_finished_before_merge); required-labels (not_finished_before_merge)
+189341,Recommend Intermediate v6 and clarify the http SSL profile repair,agners,2026-10-29 13:16:08+00:00,True,False,"Markus98, edenhaus",code-owner-approval (not_finished_before_merge); docs-missing (not_finished_before_merge); blocking-label-awaiting-frontend (not_finished_before_merge); required-labels (not_finished_before_merge)
+189309,Align cloud auth request timeouts with hass-nabucasa,javitonino,2026-10-29 09:03:30+00:00,True,False,MartinHjelmare,code-owner-approval (not_finished_before_merge); docs-missing (not_finished_before_merge); blocking-label-awaiting-frontend (not_finished_before_merge); required-labels (not_finished_before_merge)
+188992,Retry Control4 setup when the first poll fails,davidrecordon,2026-10-29 09:08:30+00:00,True,False,MartinHjelmare,code-owner-approval (not_finished_before_merge); docs-missing (not_finished_before_merge); blocking-label-awaiting-frontend (not_finished_before_merge); required-labels (not_finished_before_merge)
+158505,Add Powersensor integration,bookman-dius,2026-10-29 15:37:51+00:00,True,True,emontnemery,
+189429,Bump pyimouapi to 1.4.4,Imou-OpenPlatform,2026-10-29 13:40:59+00:00,True,True,thecode,
+189436,Bump tesla-fleet-api to 1.20.0,Bre77,2026-10-29 13:37:22+00:00,True,True,thecode,
+189439,Bump lifx-async to 7.13.2,Djelibeybi,2026-10-29 13:34:53+00:00,True,True,thecode,
+189421,Add icons to backup manager state sensor,erwindouna,2026-10-29 10:15:30+00:00,True,True,zweckj,
+189370,Add reconfigure flow to Watergate,adam-the-hero,2026-10-29 08:30:28+00:00,True,True,silamon,
+187017,Add program running time sensor to Home Connect,JulianHock,2026-10-29 08:24:22+00:00,True,True,"Diegorro98, silamon",
+189078,Add reconfigure flow to Home Connect,joostlek,2026-10-29 08:23:47+00:00,True,True,"Diegorro98, silamon",
+189104,Add reconfigure flow to IPP,joostlek,2026-10-29 08:22:51+00:00,True,True,"brianegge, silamon",

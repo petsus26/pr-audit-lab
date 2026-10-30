@@ -62,6 +62,7 @@ python main.py --help
 
 ## Output
 
+“A sample report from a real run is included in output/.”  
 `output/pr_audit_report.csv` and `output/pr_audit_report.parquet`, one row per merged PR:
 
 | Column | Description |
